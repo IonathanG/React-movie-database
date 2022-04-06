@@ -1,0 +1,38 @@
+.recommended {
+  margin: 50px 0;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    //gap: 25px;
+
+    &--media {
+      flex: 1 0 20%;
+      margin: 15px;
+      max-width: 280px;
+      min-width: 260px;
+
+      @media screen and (max-width: $tablet) {
+        flex: 1 0 25%;
+        max-width: 240px;
+        min-width: 200px;
+      }
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 10px;
+        transition: 0.3s ease-out;
+
+        @media screen and (max-width: $tablet) {
+          //max-width: 240px;
+        }
+      }
+    }
+  }
+}
