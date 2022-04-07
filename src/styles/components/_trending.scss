@@ -23,15 +23,21 @@
 
     &--media {
       position: relative;
+      max-width: 400px;
+      height: auto;
 
       img {
-        max-width: 400px;
+        max-width: 380px;
         height: auto;
         border-radius: 10px;
         transition: 0.3s ease-out;
 
         @media screen and (max-width: $tablet) {
           max-width: 320px;
+        }
+
+        @media screen and (max-width: $phone) {
+          max-width: 300px;
         }
       }
 

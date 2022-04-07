@@ -22,11 +22,10 @@ $phone: 700px;
 .main-container {
   max-width: 90%;
   height: 100%;
-  //padding: 0 5px;
   margin-top: 50px;
   margin-left: 155px;
-  //background-color: rgba(239, 239, 238, 0.127);
   transition: 0.3s ease-out;
+  //background-color: rgba(239, 239, 238, 0.127);
 
   @media screen and (max-width: $tablet) {
     width: 90%;
@@ -59,6 +58,7 @@ body {
   width: 100%;
   overflow-x: hidden;
   font-family: $mainFont, sans-serif;
+  scroll-behavior: smooth;
 }
 
 li {

@@ -8,19 +8,26 @@
   &__list {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    //gap: 25px;
+    gap: 15px;
 
     &--media {
       flex: 1 0 20%;
-      margin: 15px;
+      padding: 5px;
       max-width: 280px;
       min-width: 260px;
 
       @media screen and (max-width: $tablet) {
         flex: 1 0 25%;
+        max-width: 260px;
+        min-width: 220px;
+      }
+
+      @media screen and (max-width: $phone) {
+        flex: 1 1 40%;
         max-width: 240px;
-        min-width: 200px;
+        min-width: 120px;
       }
 
       img {
