@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Card = ({ media, largeDisplay }) => {
+const Card = ({ media, largeDisplay, type }) => {
+  const [isBookmarked, setIsBoomarked] = useState(false);
+  const [mediaType] = useState(type);
+
   const dateFormater = (date) => {
     return date.slice(0, 4);
   };
@@ -9,6 +12,21 @@ const Card = ({ media, largeDisplay }) => {
     if (type === "movie") return "Movie";
     else if (type === "tv") return "TV Series";
     else return "N/A";
+  };
+
+  const handleBookmark = () => {
+    let storedData = window.localStorage.medias
+      ? window.localStorage.movies.split(",")
+      : [];
+
+    if (!storedData.includes(media.id.toString())) {
+      storedData.push(media.id);
+      window.localStorage.movies = storedData;
+    } else {
+      let newData = storedData.filter((id) => id != media.id);
+      window.localStorage.medias = newData;
+      window.location.reload();
+    }
   };
 
   return (
@@ -34,6 +52,16 @@ const Card = ({ media, largeDisplay }) => {
               {media.title ? media.title : media.name}
             </p>
           </div>
+          <div className="bookmark-tag" onClick={() => handleBookmark()}>
+            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z"
+                stroke="#FFF"
+                strokeWidth="1.5"
+                fill="none"
+              />
+            </svg>
+          </div>
         </div>
       )}
 
@@ -54,6 +82,16 @@ const Card = ({ media, largeDisplay }) => {
           <p className="media-title">
             {media.title ? media.title : media.name}
           </p>
+          <div className="bookmark-tag">
+            <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z"
+                stroke="#FFF"
+                strokeWidth="1.5"
+                fill="none"
+              />
+            </svg>
+          </div>
         </div>
       )}
     </div>

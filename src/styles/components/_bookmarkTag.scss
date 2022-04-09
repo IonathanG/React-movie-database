@@ -1,0 +1,24 @@
+.bookmark-tag {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+
+  width: 30px;
+  height: 30px;
+  background-color: rgba(82, 81, 81, 0.564);
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: 0.3s ease-in;
+
+  &:hover {
+    transform: scale(1.15);
+    background-color: rgba(28, 28, 28, 0.231);
+  }
+
+  svg {
+    transform: rotate(1.3deg);
+  }
+}

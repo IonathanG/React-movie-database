@@ -16,7 +16,12 @@ const AllMovies = () => {
           movieList
             .slice(0, 12)
             .map((movie) => (
-              <Card key={movie.id} media={movie} largeDisplay={false} />
+              <Card
+                key={movie.id}
+                media={movie}
+                largeDisplay={false}
+                type={"movie"}
+              />
             ))}
       </div>
     </div>

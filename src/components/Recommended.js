@@ -23,6 +23,7 @@ const Recommended = () => {
                 key={recommended.id}
                 media={recommended}
                 largeDisplay={false}
+                type={"movie"}
               />
             ))}
       </div>
@@ -39,6 +40,7 @@ const Recommended = () => {
                 key={recommended.id}
                 media={recommended}
                 largeDisplay={false}
+                type={"tv"}
               />
             ))}
       </div>

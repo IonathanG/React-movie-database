@@ -14,7 +14,12 @@ const AllMovies = () => {
       <div className="main__list">
         {!isLoading &&
           TVSeriesList.slice(0, 12).map((serie) => (
-            <Card key={serie.id} media={serie} largeDisplay={false} />
+            <Card
+              key={serie.id}
+              media={serie}
+              largeDisplay={false}
+              type={"tv"}
+            />
           ))}
       </div>
     </div>

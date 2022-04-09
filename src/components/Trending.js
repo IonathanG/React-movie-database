@@ -17,7 +17,12 @@ const Trending = () => {
           trendingList
             .slice(0, 6)
             .map((trending) => (
-              <Card key={trending.id} media={trending} largeDisplay={true} />
+              <Card
+                key={trending.id}
+                media={trending}
+                largeDisplay={true}
+                type={trending.media_type}
+              />
             ))}
       </div>
     </div>
