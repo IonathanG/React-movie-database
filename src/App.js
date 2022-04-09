@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Movies from "./pages/Movies";
 import TVShows from "./pages/TVShows";
 import Bookmarks from "./pages/Bookmarks";
+import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <Route path="/movies" element={<Movies />} />
           <Route path="/tv-shows" element={<TVShows />} />
           <Route path="/bookmarks" element={<Bookmarks />} />
+          <Route path="/search/:search" element={<Search />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

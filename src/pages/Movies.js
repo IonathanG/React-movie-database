@@ -1,4 +1,5 @@
 import React from "react";
+import AllMovies from "../components/AllMovies";
 import Header from "../components/Header";
 import SearchForm from "../components/SearchForm";
 
@@ -8,7 +9,7 @@ const Movies = () => {
       <Header />
       <div className="home main-container">
         <SearchForm />
-        <h1>Movies</h1>
+        <AllMovies />
       </div>
     </div>
   );

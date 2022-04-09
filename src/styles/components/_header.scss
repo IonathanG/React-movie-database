@@ -64,12 +64,18 @@
         margin-top: 0;
       }
 
+      .nav-active {
+        img {
+          filter: brightness(0) invert(1);
+        }
+      }
+
       li {
         img {
           transition: 0.3s ease-in;
 
           &:hover {
-            filter: brightness(0) invert(1);
+            filter: brightness(0) invert(0.75);
             transform: scale(1.15);
           }
         }

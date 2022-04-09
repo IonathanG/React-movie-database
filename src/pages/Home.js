@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import Recommended from "../components/Recommended";
 import SearchForm from "../components/SearchForm";
@@ -10,6 +11,7 @@ const Home = () => {
       <Header />
       <div className="home main-container">
         <SearchForm />
+        <Link to="/search">CLick here</Link>
         <Trending />
         <Recommended />
       </div>

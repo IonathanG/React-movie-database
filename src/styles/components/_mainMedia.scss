@@ -1,4 +1,4 @@
-.recommended {
+.main {
   margin: 50px 0;
 
   h2 {
@@ -6,6 +6,7 @@
   }
 
   &__list {
+    margin-bottom: 2.5rem;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -14,9 +15,10 @@
 
     &--media {
       flex: 1 0 20%;
-      padding: 5px;
-      max-width: 280px;
-      min-width: 260px;
+      padding: 10px 5px;
+      max-width: 300px;
+      min-width: 280px;
+      //background-color: aqua;
 
       @media screen and (max-width: $tablet) {
         flex: 1 0 25%;
@@ -33,12 +35,34 @@
       img {
         width: 100%;
         height: auto;
+        margin-bottom: 5px;
         border-radius: 10px;
-        transition: 0.3s ease-out;
+        transition: 0.25s ease-in;
+        opacity: 0.9;
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+          rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+        &:hover {
+          transform: scale(1.05);
+          opacity: 1;
+        }
 
         @media screen and (max-width: $tablet) {
           //max-width: 240px;
         }
+      }
+
+      .media-description {
+        font-weight: 100;
+        font-size: 14px;
+        letter-spacing: 0px;
+        opacity: 0.8;
+      }
+
+      .media-title {
+        font-weight: 500;
+        font-size: 17px;
+        letter-spacing: 1px;
       }
     }
   }

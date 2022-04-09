@@ -1,4 +1,5 @@
 import React from "react";
+import AllBookmarks from "../components/AllBookmarks";
 import Header from "../components/Header";
 import SearchForm from "../components/SearchForm";
 
@@ -8,8 +9,7 @@ const Bookmarks = () => {
       <Header />
       <div className="home main-container">
         <SearchForm />
-        <h2>Bookmarked Movies</h2>
-        <h2>Bookmarked TV Series</h2>
+        <AllBookmarks />
       </div>
     </div>
   );

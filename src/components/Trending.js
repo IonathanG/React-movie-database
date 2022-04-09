@@ -4,7 +4,7 @@ import useFetch from "./useFetch";
 
 const Trending = () => {
   const { data: trendingList, isLoading } = useFetch(
-    `https://api.themoviedb.org/3/trending/all/week?api_key=ed82f4c18f2964e75117c2dc65e2161d`
+    `https://api.themoviedb.org/3/trending/all/day?api_key=ed82f4c18f2964e75117c2dc65e2161d`
   );
 
   return (
@@ -12,6 +12,7 @@ const Trending = () => {
       <h2>Trending</h2>
 
       <div className="trending__list">
+        {isLoading && <div>Content Loading...</div>}
         {!isLoading &&
           trendingList
             .slice(0, 6)

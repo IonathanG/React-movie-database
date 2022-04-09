@@ -14,30 +14,45 @@ const Header = () => {
           </svg>
         </div>
         <ul>
-          <NavLink to="/">
+          <NavLink
+            to="/"
+            className={(nav) => (nav.isActive ? "nav-active" : "")}
+          >
             <li>
-              <img src="assets/images/icon-nav-home.svg" alt="" />
+              <img src="/assets/images/icon-nav-home.svg" alt="Home" />
             </li>
           </NavLink>
-          <NavLink to="/movies">
+          <NavLink
+            to="/movies"
+            className={(nav) => (nav.isActive ? "nav-active" : "")}
+          >
             <li>
-              <img src="assets/images/icon-nav-movies.svg" alt="" />
+              <img src="/assets/images/icon-nav-movies.svg" alt="Movies" />
             </li>
           </NavLink>
-          <NavLink to="/tv-shows">
+          <NavLink
+            to="/tv-shows"
+            className={(nav) => (nav.isActive ? "nav-active" : "")}
+          >
             <li>
-              <img src="assets/images/icon-nav-tv-series.svg" alt="" />
+              <img
+                src="/assets/images/icon-nav-tv-series.svg"
+                alt="TV Series"
+              />
             </li>
           </NavLink>
-          <NavLink to="/bookmarks">
+          <NavLink
+            to="/bookmarks"
+            className={(nav) => (nav.isActive ? "nav-active" : "")}
+          >
             <li>
-              <img src="assets/images/icon-nav-bookmark.svg" alt="" />
+              <img src="/assets/images/icon-nav-bookmark.svg" alt="Bookmarks" />
             </li>
           </NavLink>
         </ul>
       </nav>
       <div className="profil">
-        <img src="assets/images/image-avatar.png" alt="image_avatar" />
+        <img src="/assets/images/image-avatar.png" alt="image_avatar" />
       </div>
     </div>
   );
