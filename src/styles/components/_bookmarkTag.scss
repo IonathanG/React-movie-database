@@ -14,11 +14,30 @@
   transition: 0.3s ease-in;
 
   &:hover {
-    transform: scale(1.15);
-    background-color: rgba(28, 28, 28, 0.231);
+    transform: scale(1.1);
+    background-color: rgba(82, 81, 81, 0.564);
   }
 
   svg {
     transform: rotate(1.3deg);
+  }
+}
+
+.animBookmark {
+  animation: animBookmark 0.6s 1;
+}
+
+@keyframes animBookmark {
+  25% {
+    transform: scale(1.2) rotateX(10deg);
+  }
+  50% {
+    transform: scale(1.5) rotateX(50deg);
+  }
+  75% {
+    transform: scale(1.2) rotateX(10deg);
+  }
+  100% {
+    transform: scale(1) rotateX(0deg);
   }
 }

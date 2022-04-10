@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const Card = ({ media, largeDisplay, type }) => {
-  const [isBookmarked, setIsBoomarked] = useState(false);
+const Card = ({ media, largeDisplay, type, renderBookmark = false }) => {
   const [mediaType] = useState(type);
+  const [isBookmarked, setIsBoomarked] = useState(false);
+  const [animBookmark, setAnimBookmark] = useState(false);
 
   const dateFormater = (date) => {
     return date.slice(0, 4);
@@ -14,23 +15,40 @@ const Card = ({ media, largeDisplay, type }) => {
     else return "N/A";
   };
 
+  //save and delete bookmarks in local storage
   const handleBookmark = () => {
-    let storedData = window.localStorage.medias
-      ? window.localStorage.movies.split(",")
+    let storedData = window.localStorage[mediaType]
+      ? window.localStorage[mediaType].split(",")
       : [];
 
     if (!storedData.includes(media.id.toString())) {
       storedData.push(media.id);
-      window.localStorage.movies = storedData;
+      window.localStorage[mediaType] = storedData;
+      setIsBoomarked(true);
     } else {
       let newData = storedData.filter((id) => id != media.id);
-      window.localStorage.medias = newData;
-      window.location.reload();
+      window.localStorage[mediaType] = newData;
+
+      //reload the bookmark page if item is deleted
+      setIsBoomarked(false);
+      if (renderBookmark) window.location.reload();
     }
   };
 
+  //set bookmark icon on rerender
+  useEffect(() => {
+    let storedData = window.localStorage[mediaType]
+      ? window.localStorage[mediaType].split(",")
+      : [];
+
+    if (storedData.includes(media.id.toString())) {
+      setIsBoomarked(true);
+    }
+  }, []);
+
   return (
     <div className="card">
+      {/* large display for Trending */}
       {largeDisplay && (
         <div className="trending__list--media">
           <img
@@ -52,19 +70,36 @@ const Card = ({ media, largeDisplay, type }) => {
               {media.title ? media.title : media.name}
             </p>
           </div>
-          <div className="bookmark-tag" onClick={() => handleBookmark()}>
+          <div
+            className={`bookmark-tag ${animBookmark ? "animBookmark" : ""}`}
+            onClick={() => {
+              handleBookmark();
+              setAnimBookmark(true);
+            }}
+            onAnimationEnd={() => setAnimBookmark(false)}
+          >
             <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z"
-                stroke="#FFF"
-                strokeWidth="1.5"
-                fill="none"
-              />
+              {isBookmarked ? (
+                <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M10.61 0c.14 0 .273.028.4.083a1.03 1.03 0 0 1 .657.953v11.928a1.03 1.03 0 0 1-.656.953c-.116.05-.25.074-.402.074-.291 0-.543-.099-.756-.296L5.833 9.77l-4.02 3.924c-.218.203-.47.305-.756.305a.995.995 0 0 1-.4-.083A1.03 1.03 0 0 1 0 12.964V1.036A1.03 1.03 0 0 1 .656.083.995.995 0 0 1 1.057 0h9.552Z"
+                    fill="#FFF"
+                  />
+                </svg>
+              ) : (
+                <path
+                  d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z"
+                  stroke="#FFF"
+                  strokeWidth="1.5"
+                  fill="none"
+                />
+              )}
             </svg>
           </div>
         </div>
       )}
 
+      {/* small card for main display */}
       {!largeDisplay && (
         <div className="main__list--media">
           <img
@@ -82,14 +117,30 @@ const Card = ({ media, largeDisplay, type }) => {
           <p className="media-title">
             {media.title ? media.title : media.name}
           </p>
-          <div className="bookmark-tag">
+          <div
+            className={`bookmark-tag ${animBookmark ? "animBookmark" : ""}`}
+            onClick={() => {
+              handleBookmark();
+              setAnimBookmark(true);
+            }}
+            onAnimationEnd={() => setAnimBookmark(false)}
+          >
             <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z"
-                stroke="#FFF"
-                strokeWidth="1.5"
-                fill="none"
-              />
+              {isBookmarked ? (
+                <svg width="12" height="14" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M10.61 0c.14 0 .273.028.4.083a1.03 1.03 0 0 1 .657.953v11.928a1.03 1.03 0 0 1-.656.953c-.116.05-.25.074-.402.074-.291 0-.543-.099-.756-.296L5.833 9.77l-4.02 3.924c-.218.203-.47.305-.756.305a.995.995 0 0 1-.4-.083A1.03 1.03 0 0 1 0 12.964V1.036A1.03 1.03 0 0 1 .656.083.995.995 0 0 1 1.057 0h9.552Z"
+                    fill="#FFF"
+                  />
+                </svg>
+              ) : (
+                <path
+                  d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z"
+                  stroke="#FFF"
+                  strokeWidth="1.5"
+                  fill="none"
+                />
+              )}
             </svg>
           </div>
         </div>
