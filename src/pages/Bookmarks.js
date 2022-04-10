@@ -7,7 +7,7 @@ const Bookmarks = () => {
   return (
     <div>
       <Header />
-      <div className="home main-container">
+      <div className="main-container">
         <SearchForm />
         <AllBookmarks />
       </div>

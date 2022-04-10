@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({ media, largeDisplay, type, renderBookmark = false }) => {
   const [mediaType] = useState(type);
@@ -28,9 +29,9 @@ const Card = ({ media, largeDisplay, type, renderBookmark = false }) => {
     } else {
       let newData = storedData.filter((id) => id != media.id);
       window.localStorage[mediaType] = newData;
-
-      //reload the bookmark page if item is deleted
       setIsBoomarked(false);
+
+      //reload only the bookmark page if item is deleted
       if (renderBookmark) window.location.reload();
     }
   };
@@ -51,14 +52,23 @@ const Card = ({ media, largeDisplay, type, renderBookmark = false }) => {
       {/* large display for Trending */}
       {largeDisplay && (
         <div className="trending__list--media">
-          <img
-            src={
-              media.backdrop_path !== null
-                ? `https://image.tmdb.org/t/p/w500${media.backdrop_path}`
-                : "/assets/images/poster_wide.png"
+          <Link
+            className="link-large"
+            to={
+              mediaType === "movie"
+                ? `/movie-detail/${media.id}`
+                : `/tv-detail/${media.id}`
             }
-            alt="movie poster"
-          />
+          >
+            <img
+              src={
+                media.backdrop_path !== null
+                  ? `https://image.tmdb.org/t/p/w500${media.backdrop_path}`
+                  : "/assets/images/poster_wide.png"
+              }
+              alt="movie poster"
+            />
+          </Link>
           <div className="media-container">
             <p className="media-description">
               {media.release_date
@@ -102,14 +112,22 @@ const Card = ({ media, largeDisplay, type, renderBookmark = false }) => {
       {/* small card for main display */}
       {!largeDisplay && (
         <div className="main__list--media">
-          <img
-            src={
-              media.backdrop_path !== null
-                ? `https://image.tmdb.org/t/p/w500${media.backdrop_path}`
-                : "/assets/images/poster_wide.png"
+          <Link
+            to={
+              mediaType === "movie"
+                ? `/movie-detail/${media.id}`
+                : `/tv-detail/${media.id}`
             }
-            alt="thumbnail"
-          />
+          >
+            <img
+              src={
+                media.backdrop_path !== null
+                  ? `https://image.tmdb.org/t/p/w500${media.backdrop_path}`
+                  : "/assets/images/poster_wide.png"
+              }
+              alt="thumbnail"
+            />
+          </Link>
           <p className="media-description">
             {media.release_date ? `${dateFormater(media.release_date)} ` : ""}
             {media.media_type ? mediaTypeFormater(media.media_type) : ""}

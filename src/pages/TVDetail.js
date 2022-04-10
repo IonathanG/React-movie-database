@@ -1,21 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Header from "../components/Header";
-import Recommended from "../components/Recommended";
 import SearchForm from "../components/SearchForm";
-import Trending from "../components/Trending";
 
-const Home = () => {
+const TVDetail = () => {
   return (
     <div>
       <Header />
       <div className="main-container">
         <SearchForm />
-        <Trending />
-        <Recommended />
+        <h2>TV Detail here</h2>
       </div>
     </div>
   );
 };
 
-export default Home;
+export default TVDetail;

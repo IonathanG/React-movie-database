@@ -27,4 +27,3 @@ const SearchForm = () => {
 };
 
 export default SearchForm;
-<h2>Search Form</h2>;

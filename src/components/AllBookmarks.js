@@ -36,7 +36,7 @@ const AllBookmarks = () => {
 
   return (
     <div className="all-media">
-      <h2>All Movies Bookmarked</h2>
+      <h2>Bookmarked Movies</h2>
       <div className="main__list">
         {!isLoading &&
           listMovies.map((movie) => (
@@ -51,7 +51,7 @@ const AllBookmarks = () => {
         {!listMovies.length > 0 ? <p>No Bookmarks yet</p> : ""}
       </div>
 
-      <h2>All TV Series Bookmarked</h2>
+      <h2>Bookmarked TV Series</h2>
       <div className="main__list">
         {!isLoading &&
           listTV.map((tv) => (

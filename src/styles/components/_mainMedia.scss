@@ -58,12 +58,28 @@
         font-size: 14px;
         letter-spacing: 0px;
         opacity: 0.8;
+        transition: 0.2s ease-out;
+
+        @media screen and (max-width: $tablet) {
+          font-size: 13px;
+        }
+        @media screen and (max-width: $phone) {
+          font-size: 12px;
+        }
       }
 
       .media-title {
         font-weight: 500;
         font-size: 17px;
         letter-spacing: 1px;
+        transition: 0.2s ease-out;
+
+        @media screen and (max-width: $tablet) {
+          font-size: 16px;
+        }
+        @media screen and (max-width: $phone) {
+          font-size: 15px;
+        }
       }
     }
   }
