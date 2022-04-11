@@ -1,5 +1,160 @@
 .media-detail {
+  //background-color: rgba(240, 255, 255, 0.305);
+  margin-left: 2%;
+  width: 85%;
+  height: 100%;
+  max-width: 1200px;
+  //padding-bottom: 10px;
+
+  @media screen and (max-width: $tablet) {
+    margin: 0 auto;
+    width: 92%;
+  }
+  @media screen and (max-width: $phone) {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
   h2 {
-    margin-bottom: 50px;
+    margin-bottom: 20px;
+    font-size: 30px;
+
+    @media screen and (max-width: $phone) {
+      text-align: center;
+    }
+  }
+
+  &__content {
+    // background-color: rgba(0, 255, 255, 0.327);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @media screen and (max-width: $tablet) {
+      gap: 2rem;
+    }
+
+    @media screen and (max-width: $phone) {
+      flex-direction: column;
+    }
+
+    img {
+      width: 28%;
+      min-width: 260px;
+      height: 100%;
+      border-radius: 5px;
+      cursor: auto;
+
+      @media screen and (max-width: $tablet) {
+        flex: 1 0 30%;
+        max-width: 220px;
+        min-width: 200px;
+      }
+
+      @media screen and (max-width: $tablet) {
+        flex: 1 1 80%;
+        max-width: 240px;
+        min-width: 220px;
+        margin: 0 auto;
+      }
+    }
+
+    &--container {
+      //background-color: rgba(245, 245, 220, 0.356);
+      width: 60%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
+
+      @media screen and (max-width: $tablet) {
+        width: 85%;
+        gap: 1rem;
+      }
+
+      ul {
+        margin: 6px 0;
+        display: flex;
+        flex-wrap: wrap;
+
+        li {
+          background: #41407abc;
+          border-radius: 18px;
+          padding: 4px 10px;
+          margin: 4px 4px;
+          font-size: 1.1rem;
+          font-weight: 300;
+
+          @media screen and (max-width: $tablet) {
+            font-size: 1rem;
+          }
+        }
+      }
+
+      .overview {
+        font-weight: 100;
+        font-size: 19px;
+
+        @media screen and (max-width: $tablet) {
+          font-size: 17px;
+        }
+        @media screen and (max-width: $phone) {
+          text-align: center;
+        }
+      }
+
+      .option-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: start;
+        gap: 15px;
+        //background-color: rgba(240, 255, 255, 0.298);
+
+        @media screen and (max-width: $phone) {
+          justify-content: center;
+        }
+
+        button,
+        .add-bookmark {
+          background: #41407abc;
+          border-radius: 18px;
+          border: none;
+          padding: 5px 12px;
+          margin: 0 4px;
+          font-size: 1.1rem;
+          font-weight: 300;
+          color: white;
+          cursor: pointer;
+          transition: 0.3s ease-out;
+
+          @media screen and (max-width: $tablet) {
+            font-size: 1rem;
+          }
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
+
+        .add-bookmark {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+
+          svg {
+            transform: rotate(1.3deg);
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
   }
 }

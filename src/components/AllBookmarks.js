@@ -11,7 +11,6 @@ const AllBookmarks = () => {
   useEffect(() => {
     getBookmarks("movie");
     getBookmarks("tv");
-    console.log(renderBookmark);
   }, [renderBookmark]);
 
   const getBookmarks = (mediaType) => {

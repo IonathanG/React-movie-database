@@ -3,10 +3,10 @@ import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import SearchForm from "../components/SearchForm";
 import axios from "axios";
+import MediaDetail from "../components/MediaDetail";
 
 const MovieDetail = () => {
   const { id } = useParams();
-  console.log(id);
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
@@ -23,17 +23,16 @@ const MovieDetail = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Header />
       <div className="main-container">
         <SearchForm />
         <div className="media-detail">
-          <h2>Movie Detail here</h2>
           {isLoading && <div>Content Loading...</div>}
-          {!isLoading && <p className="media-title">{data.original_title}</p>}
+          {!isLoading && <MediaDetail data={data} dataType={"movie"} />}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

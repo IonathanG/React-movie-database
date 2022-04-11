@@ -18,6 +18,7 @@ const SearchForm = () => {
         type="text"
         placeholder="Search for Movies or TV Series"
         onChange={(e) => setSearch(e.target.value)}
+        required
       />
       <Link to={search ? `/search/${search}` : ""}>
         <img src="/assets/images/icon-search.svg" alt="" />
