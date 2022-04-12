@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { handleBookmark } from "./HandleStorage";
 
 const Card = ({ media, largeDisplay, type, renderBookmark = false }) => {
   const [mediaType] = useState(type);
@@ -14,26 +15,6 @@ const Card = ({ media, largeDisplay, type, renderBookmark = false }) => {
     if (type === "movie") return "Movie";
     else if (type === "tv") return "TV Series";
     else return "N/A";
-  };
-
-  //save and delete bookmarks in local storage
-  const handleBookmark = () => {
-    let storedData = window.localStorage[mediaType]
-      ? window.localStorage[mediaType].split(",")
-      : [];
-
-    if (!storedData.includes(media.id.toString())) {
-      storedData.push(media.id);
-      window.localStorage[mediaType] = storedData;
-      setIsBoomarked(true);
-    } else {
-      let newData = storedData.filter((id) => id != media.id);
-      window.localStorage[mediaType] = newData;
-      setIsBoomarked(false);
-
-      //reload only the bookmark page if item is deleted
-      if (renderBookmark) window.location.reload();
-    }
   };
 
   //set bookmark icon on rerender
@@ -83,7 +64,7 @@ const Card = ({ media, largeDisplay, type, renderBookmark = false }) => {
           <div
             className={`bookmark-tag ${animBookmark ? "animBookmark" : ""}`}
             onClick={() => {
-              handleBookmark();
+              handleBookmark(media, type, setIsBoomarked, renderBookmark);
               setAnimBookmark(true);
             }}
             onAnimationEnd={() => setAnimBookmark(false)}
@@ -138,7 +119,7 @@ const Card = ({ media, largeDisplay, type, renderBookmark = false }) => {
           <div
             className={`bookmark-tag ${animBookmark ? "animBookmark" : ""}`}
             onClick={() => {
-              handleBookmark();
+              handleBookmark(media, type, setIsBoomarked, renderBookmark);
               setAnimBookmark(true);
             }}
             onAnimationEnd={() => setAnimBookmark(false)}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { handleBookmark } from "./HandleStorage";
 
 const MediaDetail = ({ data, dataType }) => {
   const navigate = useNavigate();
@@ -75,23 +76,6 @@ const MediaDetail = ({ data, dataType }) => {
     return genreArray.map((genre) => <li key={genre}>{genre}</li>);
   };
 
-  //save and delete bookmarks in local storage
-  const handleBookmark = () => {
-    let storedData = window.localStorage[dataType]
-      ? window.localStorage[dataType].split(",")
-      : [];
-
-    if (!storedData.includes(data.id.toString())) {
-      storedData.push(data.id);
-      window.localStorage[dataType] = storedData;
-      setIsBoomarked(true);
-    } else {
-      let newData = storedData.filter((id) => id != data.id);
-      window.localStorage[dataType] = newData;
-      setIsBoomarked(false);
-    }
-  };
-
   //set bookmark icon on rerender
   useEffect(() => {
     let storedData = window.localStorage[dataType]
@@ -136,7 +120,7 @@ const MediaDetail = ({ data, dataType }) => {
             <div
               className={`add-bookmark ${animBookmark ? "animBookmark" : ""}`}
               onClick={() => {
-                handleBookmark();
+                handleBookmark(data, dataType, setIsBoomarked, false);
                 setAnimBookmark(true);
               }}
               onAnimationEnd={() => setAnimBookmark(false)}
