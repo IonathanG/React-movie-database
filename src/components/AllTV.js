@@ -4,7 +4,7 @@ import Card from "./Card";
 
 const AllMovies = () => {
   const { data: TVSeriesList, isLoading } = useFetch(
-    `https://api.themoviedb.org/3/tv/top_rated?api_key=ed82f4c18f2964e75117c2dc65e2161d&language=en-US&page=1`
+    `https://api.themoviedb.org/3/tv/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
   );
 
   return (

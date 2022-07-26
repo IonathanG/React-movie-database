@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "./Card";
+import { useContext } from "react";
+import BookmarkContext from "../context/BookmarkContext";
 
 const AllBookmarks = () => {
   const [listMovies, setListMovies] = useState([]);
   const [listTV, setListTV] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [renderBookmark] = useState(true);
+
+  const { addBookmark } = useContext(BookmarkContext);
 
   useEffect(() => {
     getBookmarks("movie");
@@ -19,15 +23,22 @@ const AllBookmarks = () => {
       : [];
 
     for (let i = 0; i < media_id.length; i++) {
+      addBookmark(mediaType, media_id[i]);
+    }
+
+    for (let i = 0; i < media_id.length; i++) {
       axios
         .get(
-          `https://api.themoviedb.org/3/${mediaType}/${media_id[i]}?api_key=ed82f4c18f2964e75117c2dc65e2161d&language=en-US`
+          `https://api.themoviedb.org/3/${mediaType}/${media_id[i]}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
         )
         .then((res) => {
-          if (mediaType === "movie")
+          if (mediaType === "movie") {
             setListMovies((listData) => [...listData, res.data]);
-          else if (mediaType === "tv")
+            //addBookmark("movie", media_id[i]);
+          } else if (mediaType === "tv") {
             setListTV((listData) => [...listData, res.data]);
+            //addBookmark("tv", media_id[i]);
+          }
           setIsLoading(false);
         });
     }

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Header from "../components/Header";
 import SearchForm from "../components/SearchForm";
 import axios from "axios";
 import MediaDetail from "../components/MediaDetail";
@@ -13,7 +12,7 @@ const MovieDetail = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=ed82f4c18f2964e75117c2dc65e2161d&language=en-US`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
       )
       .then((res) => {
         setData(res.data);
@@ -24,7 +23,6 @@ const MovieDetail = () => {
 
   return (
     <>
-      <Header />
       <div className="main-container">
         <SearchForm />
         <div className="media-detail">

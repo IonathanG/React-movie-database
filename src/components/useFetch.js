@@ -9,7 +9,7 @@ const useFetch = (url) => {
     axios.get(url).then((res) => {
       setData(res.data.results);
       setIsLoading(false);
-      console.log(res.data.results);
+      //console.log(res.data.results);
     });
   }, [url]);
 
